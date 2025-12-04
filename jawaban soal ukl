@@ -1,0 +1,273 @@
+      import java.util.Random;
+      import java.util.Scanner;
+      import java.util.HashSet;
+      import java.util.Set;
+      import java.util.ArrayList;
+      
+      public class Jawaban_Soal_UKL {
+          public static void main(String[] args) {
+          
+      Scanner ganh = new Scanner(System.in);
+      
+              int kolom;
+              System.out.println("Masukkan nomor kolom : ");
+              kolom = ganh.nextInt();
+              switch (kolom) {
+      
+                  case 1:
+                      // NO.1
+                      //-------------------------------------------------------------------
+      
+                      Scanner WujudAsliAdmin = new Scanner(System.in);
+      
+                      System.out.print("Masukkan sebuah bilangan: ");
+                      int num = WujudAsliAdmin.nextInt();
+                      boolean isPrime = true;
+      
+                      if (num <= 1) {
+                          isPrime = false;
+                      } else {
+                          for (int i = 2; i <= Math.sqrt(num); i++) {
+                              if (num % i == 0) {
+                                  isPrime = false;
+                                  break;
+                              }
+                          }
+                      }
+      
+                      if (isPrime) {
+                          System.out.println(num + " adalah bilangan prima.");
+                      } else {
+                          System.out.println(num + " bukan bilangan prima.");
+                      }
+                      //-------------------------------------------------------------------
+                      break;
+      
+                  case 2:
+                      //NO.2
+      
+                      Scanner input = new Scanner(System.in);
+                      int[] pecahan = {100000, 50000, 20000, 10000, 5000, 2000, 1000};
+      
+                      System.out.print("Masukkan jumlah uang: ");
+                      int uang = input.nextInt();
+      
+                      for (int p : pecahan) {
+                          int lembar = uang / p;
+                          if (lembar > 0) {
+                              System.out.println(lembar + " Lembar " + p);
+                              uang %= p;
+                          }
+                      }
+                      //-------------------------------------------------------------------
+                      break;
+      
+                  case 3:
+                      // NO.3
+      
+                      Scanner MyKode = new Scanner(System.in);
+                      Random rand = new Random();
+      
+                      char[] operators = {'*', '/', '&'};
+                      String Lanjut;
+      
+                      do {
+                          int a = rand.nextInt(10) + 1;
+                          int b = rand.nextInt(10) + 1;
+                          char op = operators[rand.nextInt(3)];
+      
+                          System.out.print(a + " " + op + " " + b + " = ");
+                          int jawaban = MyKode.nextInt();
+                          int hasil = 0;
+      
+                          switch (op) {
+                              case '*':
+                                  hasil = a * b;
+                                  break;
+                              case '/':
+                                  hasil = (int) a / b;
+                                  break;
+                              case '&':
+                                  hasil = a % b;
+                                  break;
+                          }
+                          System.out.println("Hasil Benerrr : " + hasil);
+                          System.out.println("Lanjut? (y/n)");
+                          Lanjut = MyKode.next();
+                      } while (Lanjut.equalsIgnoreCase("y"));
+                      //-------------------------------------------------------------------
+                      break;
+      
+                  case 4:
+                      // NO.4
+                      String[] nama = {"Gani", "Yuda", "Sifta", "Gani", "Juni"};
+                      Set<String> set = new HashSet<>();
+                      boolean AdayangterCopy = false;
+      
+                      for (String txt : nama) {
+                          if (set.contains(txt)) {
+                              System.out.println("Ini yang Memiliki Duplikat Ialah nama : " + txt);
+                              AdayangterCopy = true;
+                              break;
+                          }
+                          set.add(txt);
+                      }
+      
+                      if (!AdayangterCopy) {
+                          System.out.println("Tidak ada yang ter Duplikat");
+                      }
+                      //-------------------------------------------------------------------
+                      break;
+      
+                  case 5:
+                      //NO.5
+                      Random random = new Random();
+                      Scanner Vins = new Scanner(System.in);
+                      ArrayList<Integer> komputerList = new ArrayList<>();
+                      ArrayList<Integer> pemainList = new ArrayList<>();
+                      int menangKomputer = 0,
+                       menangPemain = 0,
+                       ronde = 1;
+      
+                      while (menangKomputer < 5 && menangPemain < 5) {
+                          System.out.println("\nRonde " + ronde);
+                          System.out.print("Tekan Enter untuk lempar dadu...");
+                          Vins.nextLine();
+      
+                          int daduKomputer = random.nextInt(6) + 1;
+                          int daduPemain = random.nextInt(6) + 1;
+      
+                          komputerList.add(daduKomputer);
+                          pemainList.add(daduPemain);
+      
+                          System.out.println("Komputer: " + daduKomputer);
+                          System.out.println("Pemain  : " + daduPemain);
+      
+                          if (daduPemain > daduKomputer) {
+                              System.out.println("Pemain menang di ronde ini");
+                              menangPemain++;
+                          } else if (daduKomputer > daduPemain) {
+                              System.out.println("Komputer menang di ronde ini");
+                              menangKomputer++;
+                          } else {
+                              System.out.println("Seri");
+                          }
+                          ronde++;
+                      }
+      
+                      System.out.println("\n=== PERMAINAN SELESAI ===");
+                      System.out.println("Pemenangnya adalah " + (menangPemain == 5
+                              ? "Pemain" : "Komputer"));
+                      System.out.println("\nRiwayat lemparan komputer: "
+                              + komputerList);
+                      System.out.println("Riwayat lemparan pemain  : "
+                              + pemainList);
+                      System.out.println("Total kemenangan Komputer: "
+                              + menangKomputer);
+                      System.out.println("Total kemenangan Pemain  : "
+                              + menangPemain);
+                      //-------------------------------------------------------------------
+                      break;
+      
+                  case 6:
+                      //NO.6
+                      Scanner ingat = new Scanner(System.in);
+      
+                      System.out.print("Nama peminjam: ");
+                      String nama1 = ingat.nextLine();
+                      System.out.print("Judul buku: ");
+                      String judul = ingat.nextLine();
+                      System.out.print("Kategori buku (A/B/C): ");
+                      String kategori = ingat.nextLine();
+                      System.out.print("Lama peminjaman (hari): ");
+                      int hari = ingat.nextInt();
+      
+                      int tarif = 0;
+                      switch (kategori.toUpperCase()) {
+                          case "A":
+                              tarif = 2000;
+                              break;
+                          case "B":
+                              tarif = 1500;
+                              break;
+                          case "C":
+                              tarif = 1000;
+                              break;
+                      }
+                      int biayaAwal = hari * tarif;
+                      int denda = 0;
+                      if (hari > 7) {
+                          denda = (hari - 7) * 500;
+                      }
+                      int total = biayaAwal + denda;
+      
+                      System.out.println("\n=== RINCIAN BIAYA ===");
+                      System.out.println("Nama peminjam: " + nama1);
+                      System.out.println("Judul buku: " + judul);
+                      System.out.println("Kategori buku: " + kategori);
+                      System.out.println("Lama peminjaman: " + hari + " hari");
+                      System.out.println("Biaya peminjaman awal: Rp" + biayaAwal);
+                      System.out.println("Denda keterlambatan: Rp" + denda);
+                      System.out.println("Total biaya akhir: Rp" + total);
+                      //-------------------------------------------------------------------
+                      break;
+      
+                  case 7:
+                      //NO.7
+                      Scanner TarifDiskonTol = new Scanner(System.in);
+      
+                      System.out.print("Masukkan jumlah jenis cookies: ");
+                      int n = TarifDiskonTol.nextInt();
+                      TarifDiskonTol.nextLine();
+      
+                      String[] nama2 = new String[n];
+                      long[] biaya = new long[n];
+                      long[] pendapatan = new long[n];
+                      long[] labaRugi = new long[n];
+                      String[] status = new String[n];
+      
+                      long totalLabaRugi = 0;
+                      int indexLabaTertinggi = 0;
+      
+                      for (int i = 0; i < n; i++) {
+                          System.out.println("\nCookies ke-" + (i + 1));
+                          System.out.print("Nama cookies: ");
+                          nama2[i] = TarifDiskonTol.nextLine();
+                          System.out.print("Harga produksi per bungkus: ");
+                          int hargaProduksi = TarifDiskonTol.nextInt();
+                          System.out.print("Harga jual per bungkus: ");
+                          int hargaJual = TarifDiskonTol.nextInt();
+                          System.out.print("Jumlah terjual: ");
+                          int jumlah = TarifDiskonTol.nextInt();
+                          TarifDiskonTol.nextLine();
+      
+                          biaya[i] = (long) hargaProduksi * jumlah;
+                          pendapatan[i] = (long) hargaJual * jumlah;
+                          labaRugi[i] = pendapatan[i] - biaya[i];
+                          totalLabaRugi += labaRugi[i];
+      
+                          if (labaRugi[i] > 0) {
+                              status[i] = "Laba";
+                          } else if (labaRugi[i] < 0) {
+                              status[i] = "Rugi";
+                          } else {
+                              status[i] = "Impas";
+                          }
+      
+                          if (labaRugi[i] > labaRugi[indexLabaTertinggi]) {
+                              indexLabaTertinggi = i;
+                          }
+                      }
+                      //-------------------------------------------------------------------
+                      break;
+      
+                  default:
+                      System.out.println("Kolom Salah");
+                      break;
+      
+              }
+      
+          }
+      
+      
+      }
